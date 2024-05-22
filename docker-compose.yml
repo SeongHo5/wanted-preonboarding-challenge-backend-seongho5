@@ -1,0 +1,16 @@
+services:
+  mysql:
+    image: mysql:8.0.33
+    container_name: wanted-market-mysql
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: wanted_market
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    volumes:
+      - wanted-market-mysql:/var/lib/mysql
+volumes:
+  wanted-market-mysql:
+secrets:
+    MYSQL_ROOT_PASSWORD:
+        file: /run/secrets/mysql_root_password
